@@ -1,4 +1,8 @@
-<!DOCTYPE html>
+# Path to save the HTML file
+html_path = "/mnt/data/index.html"
+
+# HTML content from earlier (same as you posted)
+html_content = """<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -14,7 +18,7 @@
     }
 
     header {
-      background-color: #001f3f; /* navy blue */
+      background-color: #001f3f;
       color: #ddd;
       padding: 1rem 2rem;
       position: sticky;
@@ -179,3 +183,19 @@
   </footer>
 </body>
 </html>
+"""
+
+# Write HTML content to file
+with open(html_path, "w") as f:
+    f.write(html_content)
+
+# Create a complete ZIP with the HTML and images folder
+final_zip_path = "/mnt/data/asap_website_package.zip"
+with ZipFile(final_zip_path, "w") as zipf:
+    # Add HTML file
+    zipf.write(html_path, arcname="index.html")
+    # Add images
+    for file in os.listdir(renamed_folder):
+        zipf.write(os.path.join(renamed_folder, file), arcname=f"images/{file}")
+
+final_zip_path

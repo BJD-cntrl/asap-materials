@@ -1,8 +1,5 @@
-# Path to save the HTML file
-html_path = "/mnt/data/index.html"
-
-# HTML content from earlier (same as you posted)
-html_content = """<!DOCTYPE html>
+# Create a new HTML file with updated styles (red, black, gray theme) and corrected image references
+html_content = '''<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -11,15 +8,15 @@ html_content = """<!DOCTYPE html>
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      background-color: #1a1a1a;
+      color: #ccc;
       scroll-behavior: smooth;
       margin: 0;
     }
 
     header {
-      background-color: #001f3f;
-      color: #ddd;
+      background-color: #990000; /* red */
+      color: #f0f0f0;
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
@@ -30,7 +27,7 @@ html_content = """<!DOCTYPE html>
     }
 
     nav a {
-      color: #ddd;
+      color: #f0f0f0;
       margin-right: 1.5rem;
       text-decoration: none;
     }
@@ -40,10 +37,8 @@ html_content = """<!DOCTYPE html>
     }
 
     .hero {
-      background-image: url('images/hero.png');
-      background-size: cover;
-      background-position: center;
-      height: 400px;
+      background-color: #333;
+      height: 300px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -53,14 +48,14 @@ html_content = """<!DOCTYPE html>
 
     section {
       padding: 2rem;
-      background-color: #ffffff;
+      background-color: #2a2a2a;
       margin: 1rem;
       border-radius: 8px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
     }
 
     h2 {
-      color: #001f3f;
+      color: #ff4c4c;
     }
 
     ul {
@@ -79,7 +74,12 @@ html_content = """<!DOCTYPE html>
       width: calc(33.333% - 10px);
       max-width: 300px;
       border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
     }
 
     form input,
@@ -87,12 +87,14 @@ html_content = """<!DOCTYPE html>
       width: 100%;
       padding: 10px;
       margin: 0.5rem 0;
-      border: 1px solid #ccc;
+      border: 1px solid #555;
       border-radius: 4px;
+      background-color: #1f1f1f;
+      color: #eee;
     }
 
     form button {
-      background-color: #004085;
+      background-color: #cc0000;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -101,14 +103,14 @@ html_content = """<!DOCTYPE html>
     }
 
     form button:hover {
-      background-color: #002752;
+      background-color: #990000;
     }
 
     footer {
       text-align: center;
       padding: 1rem;
-      background-color: #001f3f;
-      color: #ccc;
+      background-color: #111;
+      color: #888;
     }
   </style>
 </head>
@@ -158,9 +160,9 @@ html_content = """<!DOCTYPE html>
   <section id="gallery">
     <h2>Gallery</h2>
     <div class="gallery">
-      <img src="images/photo1.png" alt="Work site 1">
+      <img src="images/photo1.jpg" alt="Work site 1">
       <img src="images/photo2.png" alt="Work site 2">
-      <img src="images/photo3.png" alt="Equipment">
+      <img src="images/photo3q .jpg" alt="Equipment">
       <img src="images/photo4.png" alt="Delivery truck">
       <img src="images/photo5.png" alt="Construction">
       <img src="images/photo6.png" alt="Excavator in use">
@@ -183,19 +185,11 @@ html_content = """<!DOCTYPE html>
   </footer>
 </body>
 </html>
-"""
+'''
 
-# Write HTML content to file
-with open(html_path, "w") as f:
-    f.write(html_content)
+# Write HTML to file
+html_file_path = "/mnt/data/index.html"
+with open(html_file_path, "w") as file:
+    file.write(html_content)
 
-# Create a complete ZIP with the HTML and images folder
-final_zip_path = "/mnt/data/asap_website_package.zip"
-with ZipFile(final_zip_path, "w") as zipf:
-    # Add HTML file
-    zipf.write(html_path, arcname="index.html")
-    # Add images
-    for file in os.listdir(renamed_folder):
-        zipf.write(os.path.join(renamed_folder, file), arcname=f"images/{file}")
-
-final_zip_path
+html_file_path
